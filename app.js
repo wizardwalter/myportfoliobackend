@@ -27,9 +27,6 @@ app.use((req,res,next)=>{
 
 app.use("/users", usersRoute);
 app.use("/reviews", commentRoute);
-app.get("/", (req,res)=>{
-    res.send('Hello World')
-})
 
 
 app.listen(process.env.PORT|| 3000, ()=>{
