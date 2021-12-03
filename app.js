@@ -4,14 +4,14 @@ const cors = require ("cors");
 const bodyParser = require("body-parser");
 const usersRoute = require("./routes/user");
 const commentRoute = require("./routes/comment");
-const enviromentVariable = require("./enviroment_variables.json");
+require('dotenv').config()
 
 
 
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
-mongoose.connect(enviromentVariable["MONGO_URI"], () =>{
+mongoose.connect(process.env.MONGO_URI, () =>{
     console.log('connected to database')
 });
 

@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const User = require("../models/user");
 const bcrypt = require("bcryptjs");
-const enviromentVariable = require("../enviroment_variables.json");
+require('dotenv').config
 
 module.exports.createUser = (req, res, next) =>{
      bcrypt.hash(req.body.password, 10).then(hash => {
@@ -50,7 +50,7 @@ module.exports.createUser = (req, res, next) =>{
               }
               const token = jwt.sign(
                 { email: fetchedUser.email, userId: fetchedUser._id },
-                enviromentVariable["jwt-secret"],
+                process.env.jwt-token,
                 { expiresIn: "10000" }
               );
               res.status(200).json({
